@@ -12,8 +12,10 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
+
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
@@ -71,11 +73,11 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
+                <version>2.1.1</version>
                 <configuration>
-                    <webappDirectory>/opt/tomcat/webapps/Karbon</webappDirectory>
+                    <outputDirectory>webapps</outputDirectory>
+                <warName>ROOT</warName>
                 </configuration>
             </plugin>
         </plugins>
