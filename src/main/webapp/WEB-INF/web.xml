@@ -8,7 +8,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>com.krj.karbon.HelloServlet</servlet-class>
     </servlet>
-    <servlet-mapping>ß
+    <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
         <url-pattern>/HelloServlet</url-pattern>
     </servlet-mapping>
