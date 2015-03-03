@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.krj.karbon;
+package com.krj.loginpage;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jolley
  */
-public class HelloServlet extends HttpServlet {
+@WebServlet(name = "validateLogin", urlPatterns = {"/validateLogin"})
+public class validateLogin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,19 +31,18 @@ public class HelloServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HelloServlet</title>");            
-            out.println("</head>");
-            out.println("<body style='background:black; color:lightgrey; padding:100px;'>");
-            out.println("<h1>Welcome to Karbon</h1><hr/><h2>By Jolley, Brenton and Andrew</h2>");
-            out.println("<h3>Servlet HelloServlet at " + request.getContextPath() + "</h3>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+        if (username.equals("Jolley") && password.equals("test"))
+        {
+            request.getSession().setAttribute("username", username);
+            request.getRequestDispatcher("welcome.jsp").forward(request, response);
+        }
+        else
+        {
+            request.getRequestDispatcher("login.jsp").forward(request, response);   
         }
     }
 
