@@ -19,5 +19,6 @@
             <input type="password" name="password"/>
             <input type="submit" value="Login"/>
         </form>
+        <p style="color:red">${loginError}<br/>${exceptionMsg}</p>
     </body>
 </html>
