@@ -1,2 +1,3 @@
-logout.class
-com/krj/loginpage/validateLogin.class
+com/krj/karbon/logout.class
+com/krj/karbon/steamAPIConnector.class
+com/krj/karbon/validateLogin.class
