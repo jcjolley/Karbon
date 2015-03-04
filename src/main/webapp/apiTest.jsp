@@ -19,8 +19,13 @@
             <input type="submit" value="Check API key"/>
             <br/>
             <p> Try 76561197976892493 </p>
-            <p>${steamAPIResults}</p>     
-            
+            <p>Results will appear below</p>
+            <div style="border: 1px solid lightgrey; padding:20px; width:400px;">
+                <img src="${avatar}" style="width:100px; float:left; margin-right: 20px;"/>
+                <h1> ${playerName}</h1>
+                <span>${profileURL}</span>
+                
+            </div>
         </form>
     </body>
 </html>

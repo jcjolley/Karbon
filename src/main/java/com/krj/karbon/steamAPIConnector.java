@@ -7,9 +7,14 @@ package com.krj.karbon;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.ParseException;
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -69,9 +74,35 @@ public class steamAPIConnector extends HttpServlet {
             EntityUtils.consume(entity1);
             response1.close();
             
+            
+            JsonReader jsonReader = Json.createReader(new StringReader(results));
+         
+            //get JsonObject from JsonReader
+            JsonObject jsonObject = jsonReader.readObject();
+
+            //we can close IO resource and JsonReader now
+            
+            jsonReader.close();
+            JsonObject APIResponse = jsonObject.getJsonObject("response");
+            JsonArray jsonArray = APIResponse.getJsonArray("players");    
+            JsonObject player = jsonArray.getJsonObject(0);
+            
+            String playerName = player.getString("personaname");
+            String profileURL = player.getString("profileurl");
+            String avatar =     player.getString("avatarfull");
+            
+            System.out.println(playerName);
+            System.out.println(profileURL);
+            System.out.println(avatar);
+            
+            request.getSession().setAttribute("playerName", playerName);
+            request.getSession().setAttribute("profileURL", profileURL);
+            request.getSession().setAttribute("avatar",     avatar);
             request.getSession().setAttribute("steamAPIResults", results);
+            
             request.getRequestDispatcher("apiTest.jsp").forward(request, response);
             
+
         } catch (Exception ex) {
             ex.printStackTrace();
 
