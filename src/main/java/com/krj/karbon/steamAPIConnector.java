@@ -41,25 +41,17 @@ public class steamAPIConnector extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet steamAPIConnector</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet steamAPIConnector at " + request.getContextPath() + "</h1>");
-
-             //?key=XXXXXXXXXXXXXXXXXXXXXXX&steamids=76561197960435530 
+        try {
+            
+            String userId = request.getParameter("steamAPIKey");
+            
             //this builds our GET request for us
             URI uri = new URIBuilder()
                     .setScheme("http")
                     .setHost("api.steampowered.com")
                     .setPath("/ISteamUser/GetPlayerSummaries/v0002/")
                     .setParameter("key", "06326BE3F53F72F8C6EF31C158FBACD7")
-                    .setParameter("steamids","76561197976892493")
+                    .setParameter("steamids", userId)
                     .build();
 //          
             //The Web Service expects actual '+' signs instead of %2B
@@ -77,9 +69,9 @@ public class steamAPIConnector extends HttpServlet {
             EntityUtils.consume(entity1);
             response1.close();
             
-            out.println("<p>The results are:" + results + "</p>");
-            out.println("</body>");
-            out.println("</html>");
+            request.getSession().setAttribute("steamAPIResults", results);
+            request.getRequestDispatcher("apiTest.jsp").forward(request, response);
+            
         } catch (Exception ex) {
             ex.printStackTrace();
 
