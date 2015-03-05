@@ -1,3 +1,7 @@
-com/krj/karbon/logout.class
+com/classWork/scriptures/ScriptureListHandler.class
+com/classWork/validateLogin.class
+com/classWork/logout.class
 com/krj/karbon/steamAPIConnector.class
-com/krj/karbon/validateLogin.class
+com/classWork/scriptures/Scripture.class
+com/classWork/ShowList.class
+com/classWork/scriptures/HardCodedScriptureListHandler.class
