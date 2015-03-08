@@ -1,10 +1,9 @@
-package com.classWork;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package commentSystem;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jolley
  */
-@WebServlet(urlPatterns = {"/logout"})
-public class logout extends HttpServlet {
+@WebServlet(name = "ForumLogin", urlPatterns = {"/ForumLogin"})
+public class ForumLogin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,8 +31,17 @@ public class logout extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getSession().setAttribute("username", null);
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        if (DB.isValidLogin(username, password)) {
+            request.getSession().setAttribute("username", username);
+            request.getRequestDispatcher("Forum").forward(request, response);
+        } else {
+            request.setAttribute("loginError", "Invalid Login, please try again");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

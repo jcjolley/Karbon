@@ -3,27 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.classWork;
+package commentSystem;
 
-import com.classWork.scriptures.HardCodedScriptureListHandler;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.classWork.scriptures.Scripture;
-import com.classWork.scriptures.ScriptureListHandler;
 
 /**
  *
  * @author jolley
  */
-@WebServlet(name = "ShowList", urlPatterns = {"/ShowList"})
-public class ShowList extends HttpServlet {
+@WebServlet(name = "AddPost", urlPatterns = {"/AddPost"})
+public class AddPost extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,11 +33,13 @@ public class ShowList extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Scripture> scriptures = new HardCodedScriptureListHandler().getFavoriteScriptures();
-
-        request.setAttribute("scriptures", scriptures);
-        request.getRequestDispatcher("scriptureList.jsp").forward(request, response);
+        String username = (String)request.getSession().getAttribute("username");
+        String postContent = request.getParameter("newPost");
         
+        Post post = new Post(postContent, username, LocalDateTime.now());
+        DB.insertPost(post);
+        request.getRequestDispatcher("Forum").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
