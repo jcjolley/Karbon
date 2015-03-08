@@ -45,6 +45,7 @@ public class SignUp extends HttpServlet {
                 request.getRequestDispatcher("Forum").forward(request, response);
             } else {
                 request.setAttribute("loginError", "This username is taken");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         } else {
             request.setAttribute("loginError", "Passwords do not match");
