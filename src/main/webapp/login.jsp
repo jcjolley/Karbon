@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
         <link rel="stylesheet" type="text/css" href="css/main.css">
-        <script src="/js/all.js" type="text/javascript" charset="utf-8" async  defer></script>
+        <script src="js/all.js" type="text/javascript" charset="utf-8" async  defer></script>
     </head>
     <body>
         <form class="topbar" action="logout" method="POST">
