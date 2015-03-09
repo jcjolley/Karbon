@@ -17,7 +17,7 @@ public class CommentComparator implements Comparator<Comment> {
     
     public int compare(Comment c1, Comment c2)
     {
-        return c2.getTimePosted().compareTo(c1.getTimePosted());
+        return c1.getTimePosted().compareTo(c2.getTimePosted());
     }
 
 }
