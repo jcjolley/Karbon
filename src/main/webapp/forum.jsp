@@ -32,7 +32,8 @@
             
         <c:forEach items="${posts}" var="post">
             <form class="aPost" action="AddComment" method="POST">
-                <div class="postHeader"><h3> ${post.author}:</h3>
+                <div class="postHeader">
+                    <h3> ${post.author}:</h3>
                     <div class="postTime">${post.timePosted.getDayOfWeek()}, 
                     ${post.timePosted.getHour() % 12}:<fmt:formatNumber value="${post.timePosted.getMinute()}" minIntegerDigits="2"/>
                     <c:if test="${post.timePosted.getHour() >= 12}">
@@ -41,6 +42,11 @@
                     <c:if test="${post.timePosted.getHour() < 12}">
                         AM
                     </c:if>
+                    </div>
+                    <div class="deletePost">
+                        <a href="DeletePost?postId=${post.id}">
+                            <img src="remove.png"/>
+                        </a>
                     </div>
                 </div>
                 <div class="mainPost">
@@ -53,6 +59,9 @@
                             <div class="commentTime"> ${comment.timePosted}</div>
                             <div class="commentContent">${comment.content}</div>
                             <div class="commentAuthor">~${comment.author}</div>
+                            <div class="deleteComment">
+                                <a href="DeleteComment?commentId=${comment.id}"><img src="remove.png"/></a>
+                            </div>
                         </div>
                     </c:forEach>
                     <div class="addComment">

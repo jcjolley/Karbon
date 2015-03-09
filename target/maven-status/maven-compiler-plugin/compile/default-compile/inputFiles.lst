@@ -3,6 +3,7 @@
 /Users/jolley/Karbon/src/main/java/commentSystem/AddPost.java
 /Users/jolley/Karbon/src/main/java/commentSystem/Comment.java
 /Users/jolley/Karbon/src/main/java/com/classWork/scriptures/ShowList.java
+/Users/jolley/Karbon/src/main/java/commentSystem/DeletePost.java
 /Users/jolley/Karbon/src/main/java/commentSystem/PostComparator.java
 /Users/jolley/Karbon/src/main/java/commentSystem/CommentComparator.java
 /Users/jolley/Karbon/src/main/java/commentSystem/DB.java
@@ -11,6 +12,7 @@
 /Users/jolley/Karbon/src/main/java/commentSystem/AddComment.java
 /Users/jolley/Karbon/src/main/java/com/krj/karbon/steamAPIConnector.java
 /Users/jolley/Karbon/src/main/java/commentSystem/SignUp.java
+/Users/jolley/Karbon/src/main/java/commentSystem/DeleteComment.java
 /Users/jolley/Karbon/src/main/java/com/classWork/scriptures/ScriptureListHandler.java
 /Users/jolley/Karbon/src/main/java/commentSystem/ForumLogin.java
 /Users/jolley/Karbon/src/main/java/commentSystem/Post.java

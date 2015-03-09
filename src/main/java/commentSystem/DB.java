@@ -233,6 +233,54 @@ public class DB {
             }//end finally try
         }//end try
     }
+    
+    public static void deletePost(int postId) {
+        Connection conn = null;
+
+        try {
+            //STEP 2: Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+            //STEP 3: Open a connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            
+            String sql2;
+            sql2 = "DELETE FROM comment WHERE post = ?";
+
+            PreparedStatement prest2 = conn.prepareStatement(sql2);
+            prest2.setInt(1, postId);
+
+            prest2.executeUpdate();
+
+
+            //STEP 4: Execute a query
+            String sql;
+            sql = "DELETE FROM post WHERE id = ?";
+
+            PreparedStatement prest = conn.prepareStatement(sql);
+            prest.setInt(1, postId);
+
+            prest.executeUpdate();
+
+            //STEP 6: Clean-up environment
+            conn.close();
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+            se.printStackTrace();
+        } catch (Exception e) {
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        } finally {
+            //finally block used to close resources
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+    }
 
     /**
      * 
@@ -275,6 +323,42 @@ public class DB {
         }//end try
     }
     
+    public static void deleteComment(int commentId) {
+        Connection conn = null;
+        try {
+            //STEP 2: Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+            //STEP 3: Open a connection
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            //STEP 4: Execute a query
+            String sql;
+            sql = "DELETE FROM comment WHERE id = ?";
+
+            PreparedStatement prest = conn.prepareStatement(sql);
+            prest.setInt(1, commentId);
+
+            prest.executeUpdate();
+
+            //STEP 6: Clean-up environment
+            conn.close();
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+            se.printStackTrace();
+        } catch (Exception e) {
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        } finally {
+            //finally block used to close resources
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+    }
     /**
      * 
      * @param username

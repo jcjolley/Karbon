@@ -75,21 +75,26 @@ input[type="text"]
     border-top-left-radius 5px
     border-top-right-radius 5px
     box-shadow 1px 1px 1px grey 
+    group()
     h3
+        text-align center
         padding 0
         margin 0
-        margin-left 10px
         color white
+        padding-left 10px
+    h3, .postTime, .deletePost
+        span(1/3)
+    .deletePost
+        text-align right 
+        padding-right 10px
+        a
+            img
+                width:20px   
 .mainPost
     group()
     margin 15px 0
 .postTime
     color lightgrey
-    height 20px
-    float right
-    position relative
-    top -20px
-    margin-right 20px 
     
 .postContent
     margin-left 20px
@@ -121,16 +126,21 @@ input[type="text"]
     
     group()
     .commentTime
-        col(2/7, cycle:3)
+        col(2/8, cycle:4)
         color lightgrey
         fs(60%)
     .commentContent
-        col(4/7, cycle:3)
+        col(4/8, cycle:4)
         fs(90%)
     .commentAuthor
-        col(1/7, cycle:3)
+        col(1/8, cycle:4)
         fs(90%)
         color darkblue
+    .deleteComment
+        col(1/8, cycle:4)
+        text-align right
+        img
+            width:20px    
     &:hover
         background darken(commentbg, 10)
         

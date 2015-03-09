@@ -8,10 +8,12 @@ com/classWork/scriptures/ShowList.class
 commentSystem/Comment.class
 commentSystem/Post.class
 com/classWork/validateLogin.class
+commentSystem/DeletePost.class
 com/krj/karbon/steamAPIConnector.class
 commentSystem/CommentComparator.class
 commentSystem/PostComparator.class
 commentSystem/SignUp.class
 commentSystem/DB.class
+commentSystem/DeleteComment.class
 com/classWork/scriptures/HardCodedScriptureListHandler.class
 commentSystem/AddPost.class
