@@ -14,8 +14,11 @@
         <script src="/js/all.js" type="text/javascript" charset="utf-8" async  defer></script>
     </head>
     <body>
-        <h1> Log in to join the discussion </h1>
+        <form class="topbar" action="logout" method="POST">
+            <h1 class="title"> Discussion Forum</h1>
+        </form>
         <form class="loginBox" action="ForumLogin" method="POST">
+            <h2> Log in to join the discussion </h2>
             <label> Username: </label>
             <input type="text" name="username"/><br/>
             <label> Password: </label>
@@ -26,6 +29,7 @@
         
         <p style="color:red">${loginError}<br/>${exceptionMsg}</p>
         <form class="loginBox" id ="signup" action="SignUp" method="POST" style="display:none;">
+            <h2> Sign up for an account </h2>
             <label> Username: </label>
             <input type="text" name="username"/><br/>
             <label> Password: </label>
