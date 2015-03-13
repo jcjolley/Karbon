@@ -11,6 +11,7 @@ import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.ParseException;
+import java.util.List;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -99,6 +100,9 @@ public class steamAPIConnector extends HttpServlet {
             request.getSession().setAttribute("profileURL", profileURL);
             request.getSession().setAttribute("avatar",     avatar);
             request.getSession().setAttribute("steamAPIResults", results);
+            
+            List<Game> games = GetOwnedGames.retrieve(userId);
+            request.setAttribute("games", games);
             
             request.getRequestDispatcher("apiTest.jsp").forward(request, response);
             
