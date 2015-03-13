@@ -42,8 +42,9 @@
                 <h2> Your games:</h2>
                     <c:forEach var="game" items="${games}">
                         <div>    
-                            <h3 style="margin-left:20px;">${game.name}</h2>
                             <img style="float:left; margin-right:20px" src="${game.img_logo_url}"/>
+                            <h3 style="margin-left:20px;">${game.name}</h2>
+                            
                         </div><br/>
                     </c:forEach>-->
                 </c:if>
