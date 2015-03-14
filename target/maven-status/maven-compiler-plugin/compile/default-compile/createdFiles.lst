@@ -1,10 +1,12 @@
 Movies/SearchMovie.class
 com/krj/karbon/Game.class
 com/classWork/scriptures/Scripture.class
+com/krj/karbon/SteamCallBack.class
 commentSystem/Forum.class
 com/krj/karbon/GetOwnedGames.class
 commentSystem/ForumLogin.class
 com/classWork/scriptures/ShowList.class
+com/krj/karbon/SteamOpenIDServlet.class
 com/krj/karbon/SteamAPI.class
 commentSystem/DeletePost.class
 Movies/SearchMovies.class
@@ -22,6 +24,7 @@ com/krj/karbon/SteamAccount.class
 com/krj/karbon/User.class
 commentSystem/AddComment.class
 com/krj/karbon/GetFriendsList.class
+com/krj/karbon/SteamOpenID.class
 commentSystem/Comment.class
 commentSystem/Post.class
 com/classWork/validateLogin.class

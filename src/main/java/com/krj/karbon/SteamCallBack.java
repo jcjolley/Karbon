@@ -6,7 +6,7 @@
 package com.krj.karbon;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jolley
  */
-@WebServlet(name = "steamAPIConnector", urlPatterns = {"/steamAPIConnector"})
-public class steamAPIConnector extends HttpServlet {
+@WebServlet(name = "SteamCallBack", urlPatterns = {"/SteamCallBack"})
+public class SteamCallBack extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,20 +31,11 @@ public class steamAPIConnector extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-            String steamId = (String)request.getSession().getAttribute("steamId");
-            
-            SteamAccount user = GetPlayerSummaries.retrieve(steamId);
-           
-            user.getOwnedGames();
-            
-            request.getSession().setAttribute("user", user);
-            
-            StringBuffer requestURL = request.getRequestURL();
-            int lastSlashIndex = requestURL.lastIndexOf("/");
-            String viewURL = requestURL.substring(0,lastSlashIndex) + "/apiTest.jsp";
-        
-            response.sendRedirect(viewURL);
+        SteamOpenID steamOpenId = new SteamOpenID();
+        String steamId = steamOpenId.verify(request.getRequestURL().toString(), request.getParameterMap());
+        request.getSession().setAttribute("steamId", steamId);
+        request.getRequestDispatcher("steamAPIConnector").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

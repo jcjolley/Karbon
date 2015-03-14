@@ -8,6 +8,7 @@
 /Users/jolley/Karbon/src/main/java/commentSystem/PostComparator.java
 /Users/jolley/Karbon/src/main/java/com/krj/karbon/GetFriendsList.java
 /Users/jolley/Karbon/src/main/java/com/krj/karbon/Game.java
+/Users/jolley/Karbon/src/main/java/com/krj/karbon/SteamOpenIDServlet.java
 /Users/jolley/Karbon/src/main/java/Oauth/FBCallBack.java
 /Users/jolley/Karbon/src/main/java/com/classWork/validateLogin.java
 /Users/jolley/Karbon/src/main/java/com/classWork/scriptures/ScriptureListHandler.java
@@ -19,12 +20,14 @@
 /Users/jolley/Karbon/src/main/java/commentSystem/CommentComparator.java
 /Users/jolley/Karbon/src/main/java/commentSystem/DB.java
 /Users/jolley/Karbon/src/main/java/commentSystem/Forum.java
+/Users/jolley/Karbon/src/main/java/com/krj/karbon/SteamCallBack.java
 /Users/jolley/Karbon/src/main/java/Oauth/FBShowFeed.java
 /Users/jolley/Karbon/src/main/java/commentSystem/AddComment.java
 /Users/jolley/Karbon/src/main/java/Movies/SearchMovie.java
 /Users/jolley/Karbon/src/main/java/com/krj/karbon/Friend.java
 /Users/jolley/Karbon/src/main/java/com/krj/karbon/SteamAPI.java
 /Users/jolley/Karbon/src/main/java/com/krj/karbon/steamAPIConnector.java
+/Users/jolley/Karbon/src/main/java/com/krj/karbon/SteamOpenID.java
 /Users/jolley/Karbon/src/main/java/commentSystem/SignUp.java
 /Users/jolley/Karbon/src/main/java/commentSystem/DeleteComment.java
 /Users/jolley/Karbon/src/main/java/commentSystem/Post.java

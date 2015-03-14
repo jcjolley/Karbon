@@ -14,7 +14,7 @@
         <link href='http://fonts.googleapis.com/css?family=Revalia' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Karbon</title>
     </head>
     <body style="background:black; color:lightgrey; padding:0px; margin:0px;
           font-family: 'Open Sans', sans-serif;">
@@ -24,30 +24,33 @@
             <span style="margin-left:20px; font-style:italic;">What will you play tonight?</span>
             <hr/>
         </header>
-        <form action="steamAPIConnector" method="POST" style="padding:20px 100px;">
-            <label style="font-weight: bold">Input your steam64 key here: </label>
-            <input type="text" name="steamAPIKey" style="margin-left:20px; width:175px"/>
-            <br/>
-            <input type="submit" value="Check API key" style="float:right; margin-top:20px"/>
-            <br/>
-            <p> Try 76561197976892493 </p>
-            <p>Results will appear below</p>
-            <div style="border: 1px solid lightgrey; padding:20px; width:400px;">
-                <img src="${avatar}" style="width:100px; float:left; margin-right: 20px;"/>
-                <h1> ${playerName}</h1>
-                <span>${profileURL}</span>
+        <div style="padding:20px 100px;">
 
-            </div>
-            <c:if test="${games != null}">
+            <c:if test="${user == null || user.steamId == null }">
+                <a href="SteamOpenIDServlet">
+                    <img src="http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_large_border.png"/>
+                </a>
+            </c:if>
+            <c:if test="${user != null}">
+
+                <div style="border: 1px solid lightgrey; padding:20px; width:400px;">
+                    <img src="${user.avatar}" style="width:100px; float:left; margin-right: 20px;"/>
+                    <h1> ${user.personaname}</h1>
+                    <span>${user.profileURL}</span>
+                </div>
+
                 <h2> Your games:</h2>
-                    <c:forEach var="game" items="${games}">
-                        <div>    
-                            <img style="float:left; margin-right:20px" src="${game.img_logo_url}"/>
-                            <h3 style="margin-left:20px;">${game.name}</h2>
-                            
-                        </div><br/>
-                    </c:forEach>-->
-                </c:if>
-        </form>
+                <c:forEach var="game" items="${user.games}">
+                    <div>    
+                        <img style="float:left; margin-right:20px" src="${game.img_logo_url}"/>
+                        <h3 style="margin-left:20px;">${game.name}</h2>
+
+                    </div><br/>
+                </c:forEach>-->
+            </c:if>
+        </div>
+        <footer style="position:fixed; width:100%; height:50px; bottom:0; text-align:center;">
+            <a href="http://steampowered.com">Powered by Steam</a>
+        </footer>
     </body>
 </html>

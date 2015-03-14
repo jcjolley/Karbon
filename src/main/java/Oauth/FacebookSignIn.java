@@ -47,8 +47,7 @@ public class FacebookSignIn extends HttpServlet {
         String facebookURL = facebook.getOAuthAuthorizationURL(callBackURL);
         
         
-        response.getWriter().write("The url is: " + facebookURL); 
-        response.sendRedirect(facebookURL);
+        response.getWriter().write("The url is: " + facebookURL);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
