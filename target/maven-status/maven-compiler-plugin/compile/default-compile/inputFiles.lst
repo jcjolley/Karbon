@@ -1,4 +1,3 @@
-/Users/jolley/Karbon/src/main/java/com/krj/karbon/User.java
 /Users/jolley/Karbon/src/main/java/com/krj/karbon/SteamAccount.java
 /Users/jolley/Karbon/src/main/java/commentSystem/AddPost.java
 /Users/jolley/Karbon/src/main/java/commentSystem/Comment.java
@@ -24,7 +23,6 @@
 /Users/jolley/Karbon/src/main/java/Oauth/FBShowFeed.java
 /Users/jolley/Karbon/src/main/java/commentSystem/AddComment.java
 /Users/jolley/Karbon/src/main/java/Movies/SearchMovie.java
-/Users/jolley/Karbon/src/main/java/com/krj/karbon/Friend.java
 /Users/jolley/Karbon/src/main/java/com/krj/karbon/SteamAPI.java
 /Users/jolley/Karbon/src/main/java/com/krj/karbon/steamAPIConnector.java
 /Users/jolley/Karbon/src/main/java/com/krj/karbon/SteamOpenID.java

@@ -35,37 +35,37 @@ public class GetOwnedGames {
            
             URL url = new URL(urlString);
             
-            //This fails.
-            //TODO: do it manually and see what went wrong
             ObjectMapper mapper = new ObjectMapper();
             Map<String, Object> JSONMap = mapper.readValue(url, Map.class);
     
             Map response = (Map)JSONMap.get("response");
       
             List<Map> gameMaps = (List<Map>)response.get("games");
-            for (Map map : gameMaps)
+            if (gameMaps != null)
             {
-                Game game = new Game();
-                int appid = (int)map.get("appid");
-                
-                game.setAppid(String.valueOf(appid));
-                
-                String name = (String)map.get("name");
-                game.setName(name);
-                
-                String imgURL = ((String)map.get("img_icon_url"));
-                imgURL = "http://media.steampowered.com/steamcommunity/public/images/apps/"
-                         + game.getAppid() + imgURL + ".jpg";
-                game.setImg_icon_url(imgURL);
-                
-                
-                imgURL = (String)map.get("img_logo_url");
-                imgURL = "http://media.steampowered.com/steamcommunity/public/images/apps/"
-                         + game.getAppid() + "/" + imgURL + ".jpg";
-                game.setImg_logo_url(imgURL);
-                games.add(game);
+                for (Map map : gameMaps)
+                {
+                    Game game = new Game();
+                    int appid = (int)map.get("appid");
+
+                    game.setAppid(String.valueOf(appid));
+
+                    String name = (String)map.get("name");
+                    game.setName(name);
+
+                    String imgURL = ((String)map.get("img_icon_url"));
+                    imgURL = "http://media.steampowered.com/steamcommunity/public/images/apps/"
+                             + game.getAppid() + imgURL + ".jpg";
+                    game.setImg_icon_url(imgURL);
+
+
+                    imgURL = (String)map.get("img_logo_url");
+                    imgURL = "http://media.steampowered.com/steamcommunity/public/images/apps/"
+                             + game.getAppid() + "/" + imgURL + ".jpg";
+                    game.setImg_logo_url(imgURL);
+                    games.add(game);
+                }
             }
-        
         } catch (IOException ex) {
             Logger.getLogger(GetOwnedGames.class.getName()).log(Level.SEVERE, null, ex);
         }

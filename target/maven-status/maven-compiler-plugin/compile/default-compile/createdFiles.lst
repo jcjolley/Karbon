@@ -17,11 +17,9 @@ Oauth/FBCallBack.class
 commentSystem/SignUp.class
 commentSystem/DB.class
 com/classWork/scriptures/HardCodedScriptureListHandler.class
-com/krj/karbon/Friend.class
 com/classWork/scriptures/ScriptureListHandler.class
 commentSystem/logout.class
 com/krj/karbon/SteamAccount.class
-com/krj/karbon/User.class
 commentSystem/AddComment.class
 com/krj/karbon/GetFriendsList.class
 com/krj/karbon/SteamOpenID.class

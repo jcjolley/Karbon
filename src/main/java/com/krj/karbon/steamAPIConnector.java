@@ -35,8 +35,9 @@ public class steamAPIConnector extends HttpServlet {
             String steamId = (String)request.getSession().getAttribute("steamId");
             
             SteamAccount user = GetPlayerSummaries.retrieve(steamId);
-           
+            System.out.println(user.getSteamId());
             user.getOwnedGames();
+            user.setupFriends();
             
             request.getSession().setAttribute("user", user);
             

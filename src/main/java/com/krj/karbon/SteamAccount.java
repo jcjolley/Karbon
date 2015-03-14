@@ -5,6 +5,7 @@
  */
 package com.krj.karbon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,19 +13,44 @@ import java.util.List;
  * @author jolley
  */
 public class SteamAccount {
+
     private String steamId;
     private List<Game> games;
     private List<SteamAccount> friends;
     private String avatar;
     private String personaname;
     private String realname;
-    private String profileURL;    
+    private String profileURL;
 
-    public void getOwnedGames()
-    {
-      games = GetOwnedGames.retrieve(steamId);
+    public void getOwnedGames() {
+        games = GetOwnedGames.retrieve(steamId);
+    }
+
+    public List<Game> whatToPlay() {
+        List<Game> gamesToPlay = new ArrayList<>();
+        return gamesToPlay;
+
+    }
+
+    public List<Game> whatToPlay(List<SteamAccount> friends) {
+        List<Game> gamesToPlay = new ArrayList<>();
+        return gamesToPlay;
+
     }
     
+    public List<Game> whatToBuy() {
+        List<Game> gamesToBuy = new ArrayList<>();
+        return gamesToBuy;
+    }
+
+    public List<Game> whatToBuy(List<SteamAccount> friends) {
+        List<Game> gamesToBuy = new ArrayList<>();
+        return gamesToBuy;
+    }
+    
+    public void setupFriends() {
+        friends = GetFriendsList.retrieve(steamId);
+    }
 
     public String getSteamId() {
         return steamId;
@@ -81,5 +107,5 @@ public class SteamAccount {
     public void setProfileURL(String profileURL) {
         this.profileURL = profileURL;
     }
-    
+
 }

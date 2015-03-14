@@ -39,11 +39,23 @@
                     <span>${user.profileURL}</span>
                 </div>
 
+
+                <div>
+                    <c:forEach var="friend" items="${user.friends}">
+                        <h2>${friend.personaname}</h2>
+                        <c:forEach var="fgame" items="${friend.games}">
+                            <div>    
+                                <img style="float:left; margin-right:20px" src="${fgame.img_logo_url}"/>
+                                <h3 style="margin-left:20px;">${fgame.name}</h3>
+                            </div><br/>
+                        </c:forEach>
+                    </c:forEach>
+                </div>
                 <h2> Your games:</h2>
                 <c:forEach var="game" items="${user.games}">
                     <div>    
                         <img style="float:left; margin-right:20px" src="${game.img_logo_url}"/>
-                        <h3 style="margin-left:20px;">${game.name}</h2>
+                        <h3 style="margin-left:20px;">${game.name}</h3>
 
                     </div><br/>
                 </c:forEach>-->
