@@ -39,17 +39,20 @@ public class GetFriendsList {
 
             Map response = (Map) JSONMap.get("friendslist");
 
-            List<Map> friendMaps = (List<Map>) response.get("friends");
-            for (Map map : friendMaps) {
+            if (response != null) {
+                List<Map> friendMaps = (List<Map>) response.get("friends");
+                if (friendMaps != null) {
+                    for (Map map : friendMaps) {
 
-                String steamid = (String) map.get("steamid");
-                System.out.println("Friends steam id is: " + steamid);
-                SteamAccount friend = GetPlayerSummaries.retrieve(steamid);
+                        String steamid = (String) map.get("steamid");
+                        System.out.println("Friends steam id is: " + steamid);
+                        SteamAccount friend = GetPlayerSummaries.retrieve(steamid);
 
-                friend.getOwnedGames();
-                friends.add(friend);
+                        friend.getOwnedGames();
+                        friends.add(friend);
+                    }
+                }
             }
-
         } catch (IOException ex) {
             Logger.getLogger(GetOwnedGames.class.getName()).log(Level.SEVERE, null, ex);
         }
