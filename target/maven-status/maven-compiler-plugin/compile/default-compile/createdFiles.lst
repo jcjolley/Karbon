@@ -5,8 +5,10 @@ com/krj/karbon/SteamCallBack.class
 commentSystem/Forum.class
 com/krj/karbon/GetOwnedGames.class
 commentSystem/ForumLogin.class
+ancestors/DB.class
 com/classWork/scriptures/ShowList.class
 com/krj/karbon/SteamOpenIDServlet.class
+ancestors/Person.class
 com/krj/karbon/SteamAPI.class
 commentSystem/DeletePost.class
 Movies/SearchMovies.class
@@ -15,11 +17,14 @@ com/krj/karbon/GetPlayerSummaries.class
 com/krj/karbon/steamAPIConnector.class
 Oauth/FBCallBack.class
 commentSystem/SignUp.class
+ancestors/DisplayPeople.class
 commentSystem/DB.class
 com/classWork/scriptures/HardCodedScriptureListHandler.class
 com/classWork/scriptures/ScriptureListHandler.class
+com/krj/karbon/NewServlet.class
 commentSystem/logout.class
 com/krj/karbon/SteamAccount.class
+ancestors/DisplayPerson.class
 commentSystem/AddComment.class
 com/krj/karbon/GetFriendsList.class
 com/krj/karbon/SteamOpenID.class

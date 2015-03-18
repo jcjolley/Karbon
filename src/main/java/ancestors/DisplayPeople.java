@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.krj.karbon;
+package ancestors;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jolley
  */
-@WebServlet(name = "SteamCallBack", urlPatterns = {"/SteamCallBack"})
-public class SteamCallBack extends HttpServlet {
+@WebServlet(name = "DisplayPeople", urlPatterns = {"/DisplayPeople"})
+public class DisplayPeople extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,12 +32,9 @@ public class SteamCallBack extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-            SteamOpenID steamOpenId = new SteamOpenID();
-            String steamId = steamOpenId.verify(request.getRequestURL().toString(), request.getParameterMap());
-            request.getSession().setAttribute("steamId", steamId);
-            request.getRequestDispatcher("loading.jsp").forward(request, response);
-        
+        List<Person> people = DB.getPeople();
+        request.getSession().setAttribute("people", people);
+        response.sendRedirect("people.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.krj.karbon;
+package ancestors;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jolley
  */
-@WebServlet(name = "SteamCallBack", urlPatterns = {"/SteamCallBack"})
-public class SteamCallBack extends HttpServlet {
+@WebServlet(name = "DisplayPerson", urlPatterns = {"/DisplayPerson"})
+public class DisplayPerson extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,11 +32,19 @@ public class SteamCallBack extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-            SteamOpenID steamOpenId = new SteamOpenID();
-            String steamId = steamOpenId.verify(request.getRequestURL().toString(), request.getParameterMap());
-            request.getSession().setAttribute("steamId", steamId);
-            request.getRequestDispatcher("loading.jsp").forward(request, response);
+        List<Person> people = (List<Person>)request.getSession().getAttribute("people");
+        Person myPerson;
+        myPerson = new Person();
+        int id = Integer.parseInt(request.getParameter("personId"));
+        for (Person person : people)
+        {
+            if (person.getId() == id)
+            {
+                myPerson = person;
+            }
+        }
+        request.getSession().setAttribute("person", myPerson);
+        response.sendRedirect("person.jsp");
         
     }
 
