@@ -19,9 +19,8 @@ import java.util.logging.Logger;
  * @author jolley
  */
 public class GetOwnedGames {
-    
-    public static List<Game> retrieve(String steamId)
-    {
+
+    public static List<Game> retrieve(String steamId) {
         String urlString = "";
         List<Game> games = new ArrayList();
         try {
@@ -32,44 +31,47 @@ public class GetOwnedGames {
             String include = "&include_appinfo=1";
             String format = "&format=json";
             urlString = host + path + key + id + include + format;
-           
+
             URL url = new URL(urlString);
-            
+
             ObjectMapper mapper = new ObjectMapper();
             Map<String, Object> JSONMap = mapper.readValue(url, Map.class);
-    
-            Map response = (Map)JSONMap.get("response");
-      
-            List<Map> gameMaps = (List<Map>)response.get("games");
-            if (gameMaps != null)
-            {
-                for (Map map : gameMaps)
-                {
+
+            Map response = (Map) JSONMap.get("response");
+
+            List<Map> gameMaps = (List<Map>) response.get("games");
+            if (gameMaps != null) {
+                for (Map map : gameMaps) {
                     Game game = new Game();
-                    int appid = (int)map.get("appid");
+                    int appid = (int) map.get("appid");
 
                     game.setAppid(String.valueOf(appid));
 
-                    String name = (String)map.get("name");
+                    String name = (String) map.get("name");
                     game.setName(name);
 
-                    String imgURL = ((String)map.get("img_icon_url"));
+                    String imgURL = ((String) map.get("img_icon_url"));
                     imgURL = "http://media.steampowered.com/steamcommunity/public/images/apps/"
-                             + game.getAppid() + imgURL + ".jpg";
+                            + game.getAppid() + imgURL + ".jpg";
                     game.setImg_icon_url(imgURL);
 
-
-                    imgURL = (String)map.get("img_logo_url");
+                    imgURL = (String) map.get("img_logo_url");
                     imgURL = "http://media.steampowered.com/steamcommunity/public/images/apps/"
-                             + game.getAppid() + "/" + imgURL + ".jpg";
+                            + game.getAppid() + "/" + imgURL + ".jpg";
                     game.setImg_logo_url(imgURL);
+
+                    if (map.get("playtime_2weeks") != null) {
+                        int playtime_2weeks = (int) map.get("playtime_2weeks");
+                        System.out.println("The number of minutes played is: " + playtime_2weeks);
+                        game.setPlaytime_2weeks(String.valueOf(playtime_2weeks));
+                    }
                     games.add(game);
                 }
             }
         } catch (IOException ex) {
             Logger.getLogger(GetOwnedGames.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return games;
     }
 }

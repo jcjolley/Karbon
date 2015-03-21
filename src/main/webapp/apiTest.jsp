@@ -15,6 +15,11 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Karbon</title>
+        <style>
+            .rightside {
+                float: right;
+            }
+        </style>
     </head>
     <body style="background:black; color:lightgrey; padding:0px; margin:0px;
           font-family: 'Open Sans', sans-serif;">
@@ -39,26 +44,24 @@
                     <span>${user.profileURL}</span>
                 </div>
 
-
-                <div>
+                <form class="rightside" action="GetGameList" method="POST">
+                    <input type="submit" value="Check these friends"/><br/>
+                    <input type="checkbox" value="1" name="recent">
+                    <label>Only if recently played</label><br/>
+                    <input type="radio" name="buyOrPlay" value="buy"><label>buy</label>
+                    <input type="radio" name="buyOrPlay" value="play"><label>play</label><br/><br/>
+                    
                     <c:forEach var="friend" items="${user.friends}">
-                        <h2>${friend.personaname}</h2>
-                        <c:forEach var="fgame" items="${friend.games}">
-                            <div>    
-                                <img style="float:left; margin-right:20px" src="${fgame.img_logo_url}"/>
-                                <h3 style="margin-left:20px;">${fgame.name}</h3>
-                            </div><br/>
-                        </c:forEach>
+                        <input type="checkbox" value="${friend.steamId}" name="friendId"/>
+                        <label>${friend.personaname}</label><br/>
                     </c:forEach>
-                </div>
-                <h2> Your games:</h2>
-                <c:forEach var="game" items="${user.games}">
-                    <div>    
-                        <img style="float:left; margin-right:20px" src="${game.img_logo_url}"/>
-                        <h3 style="margin-left:20px;">${game.name}</h3>
-
-                    </div><br/>
-                </c:forEach>-->
+                               
+                </form>
+                <c:if test="${gamesList != null}">
+                    <c:forEach var="game" items="${gamesList}">
+                        <p>${game.name} : ${game.instances}</p>    
+                    </c:forEach>
+                </c:if>
             </c:if>
         </div>
         <footer style="position:fixed; width:100%; height:50px; bottom:0; text-align:center;">

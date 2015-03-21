@@ -6,6 +6,7 @@
 package com.krj.karbon;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -18,7 +19,22 @@ public class Game {
     private String playtime_forever;
     private String img_icon_url;
     private String img_logo_url;
+    private int instances;
 
+    public Game() {
+        instances = 0;
+        playtime_2weeks = "-1";
+    }
+
+    public int getInstances() {
+        return instances;
+    }
+
+    public void setInstances(int instances) {
+        this.instances = instances;
+    }
+    
+    
     public String getAppid() {
         return appid;
     }
@@ -67,4 +83,26 @@ public class Game {
         this.img_logo_url = img_logo_url;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.appid);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Game other = (Game) obj;
+        if (!Objects.equals(this.appid, other.appid)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

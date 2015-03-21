@@ -37,7 +37,7 @@ public class ShowList extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Scripture> scriptures = new HardCodedScriptureListHandler().getFavoriteScriptures();
+        List<Scripture> scriptures = new UserScriptureListHandler().getFavoriteScriptures();
 
         request.setAttribute("scriptures", scriptures);
         request.getRequestDispatcher("scriptureList.jsp").forward(request, response);
