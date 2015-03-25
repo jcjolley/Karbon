@@ -39,6 +39,7 @@ ancestors/DisplayPeople.class
 commentSystem/DB.class
 com/classWork/scriptures/HardCodedScriptureListHandler.class
 com/classWork/scriptures/ScriptureListHandler.class
+com/krj/karbon/NewServlet.class
 commentSystem/logout.class
 ancestors/DisplayPerson.class
 com/classWork/scriptures/dataaccess/FileScriptureDao.class

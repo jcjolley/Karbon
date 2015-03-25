@@ -21,6 +21,15 @@ public class SteamAccount {
     private String personaname;
     private String realname;
     private String profileURL;
+    private List<Game> gameList;
+
+    public List<Game> getGameList() {
+        return gameList;
+    }
+
+    public void setGameList(List<Game> gameList) {
+        this.gameList = gameList;
+    }
 
     public void getOwnedGames() {
         games = GetOwnedGames.retrieve(steamId);

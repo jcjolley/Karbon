@@ -5,6 +5,7 @@
  */
 package com.krj.karbon;
 
+import com.google.gson.Gson;
 import commentSystem.PostComparator;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -135,13 +136,17 @@ public class GetGameList extends HttpServlet {
         gamesList = gamesToPlay(user, chosenFriends, recent); 
         }
         
+        user.setGameList(gamesList);
         request.getSession().setAttribute("gamesList", gamesList);
-        response.sendRedirect("apiTest.jsp");
         
-        //TODO give the gameList as a JSON array and directly write it out instead
-        //of doing a response.sendRedirect.  This will let us use Angularjs to
-        //get the data and do whatever we want with it.  
-
+        Gson gson = new Gson();
+        String userString = gson.toJson(user);
+        
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+     
+            out.println(userString);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
