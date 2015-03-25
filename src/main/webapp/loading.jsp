@@ -22,6 +22,9 @@
         </header>
         <div style="text-align: center">
             <br />
+            <br />
+            <br />
+            <br />
             <h1> Loading Content</h1>
             <br />
             <img src="Loading.gif" alt="Loading..."/>
