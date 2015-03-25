@@ -52,7 +52,7 @@ Author : jolley
 </c:if>
 </div>
 <footer>
-<a href="http://steampowered.com">Powered by Steam</a>
+<img src="Powered_by_steam.jpg" alt="Powered by Steam"/>
 </footer>
 </body>
 </html>
