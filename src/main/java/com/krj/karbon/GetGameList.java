@@ -137,6 +137,10 @@ public class GetGameList extends HttpServlet {
         
         request.getSession().setAttribute("gamesList", gamesList);
         response.sendRedirect("apiTest.jsp");
+        
+        //TODO give the gameList as a JSON array and directly write it out instead
+        //of doing a response.sendRedirect.  This will let us use Angularjs to
+        //get the data and do whatever we want with it.  
 
     }
 
