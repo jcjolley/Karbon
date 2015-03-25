@@ -6,14 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html ng-app="karbon">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="css/results.css"/>
-        <script src="js/results.js">
+        <script src="js/results.js"></script>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body ng-controller="karbonCtrl">
+        <h1>{{user.steamId}}</h1>
     </body>
 </html>
