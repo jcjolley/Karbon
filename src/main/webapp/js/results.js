@@ -524,8 +524,17 @@ app = angular.module('karbon', []);
 
 app.controller('karbonCtrl', [
   '$scope', '$timeout', '$interval', function($scope, $timeout, $interval) {
-    $.getJSON("GetGameList", function(data) {
-      return $scope.user = data;
+    $.ajax({
+      type: "POST",
+      url: "GetGameList",
+      data: "",
+      success: function(result) {
+        alert("The result is: " + result);
+        return $scope.user = JSON.parse(result);
+      },
+      failure: function() {
+        return alert("It failed");
+      }
     });
     return $scope.name = "Jolley";
   }

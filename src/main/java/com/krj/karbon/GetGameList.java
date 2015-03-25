@@ -115,36 +115,43 @@ public class GetGameList extends HttpServlet {
 
         //get the friendlist
         SteamAccount user = (SteamAccount) request.getSession().getAttribute("user");
-        List<SteamAccount> allFriends = user.getFriends();
+        List<SteamAccount> allFriends = null;
+        if (user != null) {
+            allFriends = user.getFriends();
+        }
         String[] selectedFriends = request.getParameterValues("friendId");
         String recent = request.getParameter("recent");
         String buyOrPlay = request.getParameter("buyOrPlay");
         List<Game> gamesList;
         List<SteamAccount> chosenFriends = new ArrayList<>();
-        
-        for (SteamAccount friend : allFriends) {
-            for (String friendId : selectedFriends) {
-                if (friend.getSteamId().equals(friendId)) {
-                    chosenFriends.add(friend);
+
+        if (allFriends != null && selectedFriends != null) {
+            for (SteamAccount friend : allFriends) {
+                for (String friendId : selectedFriends) {
+                    if (friend.getSteamId().equals(friendId)) {
+                        chosenFriends.add(friend);
+                    }
                 }
             }
         }
-        
+
         if (buyOrPlay != null && buyOrPlay.equals("buy")) {
-        gamesList = gamesToBuy(user, chosenFriends, recent);
+            gamesList = gamesToBuy(user, chosenFriends, recent);
         } else {
-        gamesList = gamesToPlay(user, chosenFriends, recent); 
+            gamesList = gamesToPlay(user, chosenFriends, recent);
         }
-        
-        user.setGameList(gamesList);
+
+        if (user != null) {
+            user.setGameList(gamesList);
+        }
         request.getSession().setAttribute("gamesList", gamesList);
-        
+
         Gson gson = new Gson();
         String userString = gson.toJson(user);
-        
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-     
+
             out.println(userString);
         }
     }
