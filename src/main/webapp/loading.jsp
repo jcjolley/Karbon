@@ -15,13 +15,22 @@
         <title>Loading</title>
     </head>
     <body onload="window.location.replace('steamAPIConnector')">
-        <h1> Loading Content</h1>
-        <br />
-        <img src="Loading.gif" alt="Loading..."/>
-        <br />
-        <br />
-        <br />
-        <br />
-        <img src="Powered_by_steam.jpg" alt="Powered by Steam"/>
+        <header>
+            <h1>Karbon</h1>
+            <span>What will you play tonight?</span>
+            <hr/>
+        </header>
+        <div style="text-align: center">
+            <br />
+            <h1> Loading Content</h1>
+            <br />
+            <img src="Loading.gif" alt="Loading..."/>
+            <br />
+
+            <br />
+            <footer>
+                <img src="Powered_by_steam.jpg" alt="Powered by Steam"/>
+            </footer>
+        </div>
     </body>
 </html>
