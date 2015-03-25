@@ -43,7 +43,7 @@ public class steamAPIConnector extends HttpServlet {
             
             StringBuffer requestURL = request.getRequestURL();
             int lastSlashIndex = requestURL.lastIndexOf("/");
-            String viewURL = requestURL.substring(0,lastSlashIndex) + "/apiTest.jsp";
+            String viewURL = requestURL.substring(0,lastSlashIndex) + "/results.jsp";
         
             response.sendRedirect(viewURL);
     }

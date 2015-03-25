@@ -14,6 +14,16 @@
         <script src="js/results.js"></script>
     </head>
     <body ng-controller="karbonCtrl">
-        <h1>Why {{user.steamId}}</h1>
+        <h1>Your friends</h1>
+        <div class="sidebar">
+            <div ng-repeat="friend in user.friends">
+                <input type="checkbox" name="selectedFriends[]" value="{{friend.steamId}}" ng-model="friend.selected" ng-click="getGamesToPlay()"/> {{friend.personaname}}
+            </div>
+        </div>
+        <div class="theList">
+            <div ng-repeat="game in gameList">
+                {{game.name}} : {{game.count}}
+            </div>
+        </div>
     </body>
 </html>

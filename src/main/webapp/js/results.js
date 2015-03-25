@@ -529,13 +529,34 @@ app.controller('karbonCtrl', [
       url: "GetGameList",
       data: "",
       success: function(result) {
-        alert("The result is: " + result);
-        return $scope.user = JSON.parse(result);
+        $scope.user = JSON.parse(result);
+        return $scope.$apply();
       },
       failure: function() {
         return alert("It failed");
       }
     });
-    return $scope.name = "Jolley";
+    $scope.name = "Jolley";
+    return $scope.getGamesToPlay = function() {
+      var friend, game, gamesToPlay, i, _i, _j, _len, _len1, _ref, _ref1;
+      gamesToPlay = [];
+      _ref = $scope.user.friends;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        friend = _ref[_i];
+        if (friend.selected) {
+          _ref1 = friend.games;
+          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+            game = _ref1[_j];
+            i = gamesToPlay.indexOf(game);
+            if (i === -1) {
+              gamesToPlay.push(game);
+            } else {
+              gamesToPlay[i].count = gamesToPlay[i].count + 1;
+            }
+          }
+        }
+      }
+      return $scope.gameList = gamesToPlay;
+    };
   }
 ]);

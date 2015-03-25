@@ -37,6 +37,7 @@ Oauth/FacebookSignIn.class
 commentSystem/SignUp.class
 ancestors/DisplayPeople.class
 commentSystem/DB.class
+.netbeans_automatic_build
 com/classWork/scriptures/HardCodedScriptureListHandler.class
 com/classWork/scriptures/ScriptureListHandler.class
 com/krj/karbon/NewServlet.class
