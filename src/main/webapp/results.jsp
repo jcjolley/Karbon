@@ -14,6 +14,6 @@
         <script src="js/results.js"></script>
     </head>
     <body ng-controller="karbonCtrl">
-        <h1>{{user.steamId}}</h1>
+        <h1>Why {{user.steamId}}</h1>
     </body>
 </html>
