@@ -12,7 +12,24 @@
         <title>JSP Page</title>
     </head>
     <body onload="window.location.replace('steamAPIConnector')">
-        <h1> loading </h1>
-        <img src="http://www.pixteller.com/images/loading.gif"/>
+        <header>
+            <h1>Karbon</h1>
+            <span>What will you play tonight?</span>
+            <hr/>
+        </header>
+        <div style="text-align: center">
+            <br />
+            <br />
+            <br />
+            <br />
+            <h1> Loading Content</h1>
+            <br />
+            <img src="Loading.gif" alt="Loading..."/>
+            <br />
+            <br />
+            <footer>
+                <img src="Powered_by_steam.jpg" alt="Powered by Steam"/>
+            </footer>
+        </div>
     </body>
 </html>
