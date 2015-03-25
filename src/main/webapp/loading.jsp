@@ -1,15 +1,18 @@
 <%-- 
     Document   : loading
     Created on : Mar 17, 2015, 3:44:34 PM
-    Author     : jolley
+    Author     : Andrew
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/karbon.css" rel="stylesheet" type="text/css"/>
+        <link href='http://fonts.googleapis.com/css?family=Revalia' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Loading</title>
     </head>
     <body onload="window.location.replace('steamAPIConnector')">
         <header>
@@ -26,6 +29,7 @@
             <br />
             <img src="Loading.gif" alt="Loading..."/>
             <br />
+
             <br />
             <footer>
                 <img src="Powered_by_steam.jpg" alt="Powered by Steam"/>
