@@ -8,11 +8,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/karbon.css" rel="stylesheet" type="text/css"/>
+        <link href='http://fonts.googleapis.com/css?family=Revalia' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Loading</title>
     </head>
     <body onload="window.location.replace('steamAPIConnector')">
-        <h1> loading </h1>
-        <img src="http://www.pixteller.com/images/loading.gif"/>
+        <h1> Loading Content</h1>
+        <br />
+        <img src="Loading.gif" alt="Loading..."/>
+        <br />
+        <br />
+        <br />
+        <br />
+        <img src="Powered_by_steam.jpg" alt="Powered by Steam"/>
     </body>
 </html>
