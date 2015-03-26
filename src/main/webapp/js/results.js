@@ -524,39 +524,199 @@ app = angular.module('karbon', []);
 
 app.controller('karbonCtrl', [
   '$scope', '$timeout', '$interval', function($scope, $timeout, $interval) {
+    var addGame, buyOrPlay, getGames, getRecentGames, initializeGames, sortBy;
+    Array.prototype.remove = function(e) {
+      var t, _ref;
+      if ((t = this.indexOf(e)) > -1) {
+        return ([].splice.apply(this, [t, t - t + 1].concat(_ref = [])), _ref);
+      }
+    };
     $.ajax({
       type: "POST",
       url: "GetGameList",
       data: "",
       success: function(result) {
         $scope.user = JSON.parse(result);
+        $scope.all = true;
+        initializeGames();
+        $scope.getGameList();
         return $scope.$apply();
       },
       failure: function() {
         return alert("It failed");
       }
     });
-    $scope.name = "Jolley";
-    return $scope.getGamesToPlay = function() {
-      var friend, game, gamesToPlay, i, _i, _j, _len, _len1, _ref, _ref1;
-      gamesToPlay = [];
-      _ref = $scope.user.friends;
+    sortBy = function(a, b) {
+      var aName, bName;
+      if (a.count < b.count) {
+        return 1;
+      }
+      if (a.count > b.count) {
+        return -1;
+      }
+      aName = a.name.toLowerCase();
+      bName = b.name.toLowerCase();
+      if (aName < bName) {
+        return -1;
+      }
+      if (aName > bName) {
+        return 1;
+      }
+      return 0;
+    };
+    initializeGames = function() {
+      var friend, game, _i, _j, _len, _len1, _ref, _ref1, _results;
+      _ref = $scope.user.games;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        friend = _ref[_i];
-        if (friend.selected) {
-          _ref1 = friend.games;
-          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-            game = _ref1[_j];
-            i = gamesToPlay.indexOf(game);
-            if (i === -1) {
-              gamesToPlay.push(game);
-            } else {
-              gamesToPlay[i].count = gamesToPlay[i].count + 1;
+        game = _ref[_i];
+        game.count = 1;
+        game.flist = [];
+      }
+      _ref1 = $scope.user.friends;
+      _results = [];
+      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+        friend = _ref1[_j];
+        _results.push((function() {
+          var _k, _len2, _ref2, _results1;
+          _ref2 = friend.games;
+          _results1 = [];
+          for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+            game = _ref2[_k];
+            game.count = 1;
+            _results1.push(game.flist = []);
+          }
+          return _results1;
+        })());
+      }
+      return _results;
+    };
+    addGame = function(games, newGame, friend) {
+      var found, game, _i, _len;
+      found = false;
+      for (_i = 0, _len = games.length; _i < _len; _i++) {
+        game = games[_i];
+        if ((game != null) && (newGame != null) && game.name === newGame.name) {
+          found = true;
+          game.count++;
+          if (game.flist.indexOf(friend.personaname) === -1) {
+            game.flist.push(friend.personaname);
+          }
+        }
+      }
+      if (!found && (newGame != null) && newGame.appid !== 205790 && newGame.appid !== 223530) {
+        newGame.flist.push(friend.personaname);
+        games.push(newGame);
+      }
+      return games;
+    };
+    buyOrPlay = function(games) {
+      var game, myGame, newGameList, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1;
+      if ($scope.fPlay) {
+        $scope.title = "Games to play";
+        newGameList = [];
+        for (_i = 0, _len = games.length; _i < _len; _i++) {
+          game = games[_i];
+          _ref = $scope.user.games;
+          for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
+            myGame = _ref[_j];
+            if ((game != null) && (myGame != null) && game.name === myGame.name) {
+              newGameList.push(game);
+            }
+          }
+        }
+        games = newGameList;
+      } else {
+        $scope.title = "Games to buy";
+        for (_k = 0, _len2 = games.length; _k < _len2; _k++) {
+          game = games[_k];
+          _ref1 = $scope.user.games;
+          for (_l = 0, _len3 = _ref1.length; _l < _len3; _l++) {
+            myGame = _ref1[_l];
+            if ((game != null) && (myGame != null) && game.name === myGame.name) {
+              games.remove(game);
+              break;
             }
           }
         }
       }
-      return $scope.gameList = gamesToPlay;
+      return games;
+    };
+    getGames = function() {
+      var friend, game, games, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+      games = [];
+      _ref = $scope.user.friends;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        friend = _ref[_i];
+        if ($scope.all) {
+          _ref1 = friend.games;
+          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+            game = _ref1[_j];
+            if ($scope.recent) {
+              if ((game != null) && parseInt(game.playtime_2weeks) > 1) {
+                games = addGame(games, game, friend);
+              }
+            } else {
+              games = addGame(games, game, friend);
+            }
+          }
+        } else {
+          if (friend.selected) {
+            _ref2 = friend.games;
+            for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+              game = _ref2[_k];
+              if ($scope.recent) {
+                if ((game != null) && parseInt(game.playtime_2weeks) > 1) {
+                  games = addGame(games, game, friend);
+                }
+              } else {
+                games = addGame(games, game, friend);
+              }
+            }
+          }
+        }
+      }
+      return games;
+    };
+    getRecentGames = function(games) {
+      var game, recentGames, _i, _len;
+      recentGames = [];
+      for (_i = 0, _len = games.length; _i < _len; _i++) {
+        game = games[_i];
+        if (parseInt(game.playtime_2weeks) > 1) {
+          recentGames.push(game);
+        }
+      }
+      return recentGames;
+    };
+    $scope.getGameList = function() {
+      var friend, game, games, newGames, _i, _j, _len, _len1, _ref;
+      games = [];
+      newGames = [];
+      initializeGames();
+      games = getGames();
+      games = buyOrPlay(games);
+      if ($scope.all) {
+        _ref = $scope.user.friends;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          friend = _ref[_i];
+          friend.selected = false;
+        }
+      }
+      if ($scope.all && !$scope.recent) {
+        for (_j = 0, _len1 = games.length; _j < _len1; _j++) {
+          game = games[_j];
+          if (game.count > 2) {
+            newGames.push(game);
+          }
+        }
+        games = newGames;
+      }
+      games.sort(sortBy);
+      return $scope.gameList = games;
+    };
+    return $scope.getIndGameList = function() {
+      $scope.all = false;
+      return $scope.getGameList();
     };
   }
 ]);

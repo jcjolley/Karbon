@@ -119,33 +119,11 @@ public class GetGameList extends HttpServlet {
         if (user != null) {
             allFriends = user.getFriends();
         }
-        String[] selectedFriends = request.getParameterValues("friendId");
-        String recent = request.getParameter("recent");
-        String buyOrPlay = request.getParameter("buyOrPlay");
-        List<Game> gamesList;
-        List<SteamAccount> chosenFriends = new ArrayList<>();
-
-        if (allFriends != null && selectedFriends != null) {
-            for (SteamAccount friend : allFriends) {
-                for (String friendId : selectedFriends) {
-                    if (friend.getSteamId().equals(friendId)) {
-                        chosenFriends.add(friend);
-                    }
-                }
-            }
-        }
-
-        if (buyOrPlay != null && buyOrPlay.equals("buy")) {
-            gamesList = gamesToBuy(user, chosenFriends, recent);
-        } else {
-            gamesList = gamesToPlay(user, chosenFriends, recent);
-        }
-
-        if (user != null) {
-            user.setGameList(gamesList);
-        }
-        request.getSession().setAttribute("gamesList", gamesList);
-
+        List<Game> gamesToBuy = gamesToBuy(user, allFriends,"");
+        List<Game> gamesToPlay = gamesToPlay(user, allFriends,"");
+        
+        user.setGamesToBuy(gamesToBuy);
+        user.setGamesToPlay(gamesToPlay);
         Gson gson = new Gson();
         String userString = gson.toJson(user);
 

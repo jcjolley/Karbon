@@ -21,16 +21,27 @@ public class SteamAccount {
     private String personaname;
     private String realname;
     private String profileURL;
-    private List<Game> gameList;
+    private List<Game> gamesToPlay;
+    private List<Game> gamesToBuy;
 
-    public List<Game> getGameList() {
-        return gameList;
+    public List<Game> getGamesToPlay() {
+        return gamesToPlay;
     }
 
-    public void setGameList(List<Game> gameList) {
-        this.gameList = gameList;
+    public void setGamesToPlay(List<Game> gamesToPlay) {
+        this.gamesToPlay = gamesToPlay;
     }
 
+    public List<Game> getGamesToBuy() {
+        return gamesToBuy;
+    }
+
+    public void setGamesToBuy(List<Game> gamesToBuy) {
+        this.gamesToBuy = gamesToBuy;
+    }
+
+    
+    
     public void getOwnedGames() {
         games = GetOwnedGames.retrieve(steamId);
     }

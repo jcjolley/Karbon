@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author jolley
  */
 public class Game {
-    private String appid;
+    private int appid;
     private String name;
     private String playtime_2weeks;
     private String playtime_forever;
@@ -35,11 +35,11 @@ public class Game {
     }
     
     
-    public String getAppid() {
+    public int getAppid() {
         return appid;
     }
 
-    public void setAppid(String appid) {
+    public void setAppid(int appid) {
         this.appid = appid;
     }
 

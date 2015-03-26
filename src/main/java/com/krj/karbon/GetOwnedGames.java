@@ -45,7 +45,7 @@ public class GetOwnedGames {
                     Game game = new Game();
                     int appid = (int) map.get("appid");
 
-                    game.setAppid(String.valueOf(appid));
+                    game.setAppid(appid);
 
                     String name = (String) map.get("name");
                     game.setName(name);
@@ -62,7 +62,6 @@ public class GetOwnedGames {
 
                     if (map.get("playtime_2weeks") != null) {
                         int playtime_2weeks = (int) map.get("playtime_2weeks");
-                        System.out.println("The number of minutes played is: " + playtime_2weeks);
                         game.setPlaytime_2weeks(String.valueOf(playtime_2weeks));
                     }
                     games.add(game);

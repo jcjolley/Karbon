@@ -45,7 +45,6 @@ public class GetFriendsList {
                     for (Map map : friendMaps) {
 
                         String steamid = (String) map.get("steamid");
-                        System.out.println("Friends steam id is: " + steamid);
                         SteamAccount friend = GetPlayerSummaries.retrieve(steamid);
 
                         friend.getOwnedGames();
