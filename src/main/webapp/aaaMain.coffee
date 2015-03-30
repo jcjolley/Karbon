@@ -56,21 +56,21 @@ app.controller('karbonCtrl', ['$scope', '$timeout', '$interval',\
   buyOrPlay = (games) ->
         #games to buy or games to play?
     if $scope.fPlay
-      $scope.title = "Games to play"
+      $scope.title = "Games to Play"
       newGameList = []
       for game in games
         for myGame in $scope.user.games
-          if game? and myGame? and game.name is myGame.name
+          if game? and myGame? and ((game.name is myGame.name) or (game.appid is myGame.appid))
             newGameList.push(game)
       games = newGameList
     else
-      $scope.title="Games to buy"
-      for game in games
-        for myGame in $scope.user.games
-          if game? and myGame? and game.name is myGame.name
-             games.remove(game)
-             break
-
+      newBuyList = []
+      $scope.title="Games to Buy"
+      for myGame in $scope.user.games
+        for game in games
+          if game? and myGame? and ((game.name is myGame.name) or (game.appid is myGame.appid))
+            games.remove(game)
+            break
     return games
 
   getGames = ->
@@ -113,7 +113,7 @@ app.controller('karbonCtrl', ['$scope', '$timeout', '$interval',\
     games = buyOrPlay(games)
     if $scope.all
       for friend in $scope.user.friends
-        friend.selected = false; 
+        friend.selected = false
     if $scope.all and !$scope.recent
       for game in games
         if game.count > 2
@@ -126,4 +126,6 @@ app.controller('karbonCtrl', ['$scope', '$timeout', '$interval',\
     $scope.all = false
     $scope.getGameList()
 
+  $scope.getMyGames = ->
+    $scope.gameList = $scope.user.games
 ]) #End of AngularJS scope

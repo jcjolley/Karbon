@@ -8,15 +8,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="css/karbon.css" rel="stylesheet" type="text/css"/>
+        <link href="css/results.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Revalia' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Loading</title>
+
     </head>
     <body onload="window.location.replace('steamAPIConnector')">
         <header>
-            <h1>Karbon</h1>
+            <h1 id="headerTitle">Karbon</h1>
             <span>What will you play tonight?</span>
             <hr/>
         </header>
@@ -25,9 +26,9 @@
             <br />
             <br />
             <br />
-            <h1> Loading Content</h1>
+            <h1 style="color:white;"> Calculating Awesome</h1>
             <br />
-            <img src="Loading.gif" alt="Loading..."/>
+            <img src="img/loading.jpg" />
             <br />
 
             <br />

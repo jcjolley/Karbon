@@ -6,6 +6,8 @@
 package com.krj.karbon;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -13,17 +15,31 @@ import java.util.Objects;
  * @author jolley
  */
 public class Game {
+
     private int appid;
     private String name;
     private String playtime_2weeks;
     private String playtime_forever;
     private String img_icon_url;
     private String img_logo_url;
+    private List<Boolean> platforms;
+    private List<String> categories;
     private int instances;
 
     public Game() {
         instances = 0;
         playtime_2weeks = "-1";
+        name = "";
+        platforms = new ArrayList<Boolean>();
+        categories = new ArrayList<String>();
+    }
+
+    public void addCategory(String category) {
+        categories.add(category);
+    }
+    
+    public void addPlatform(Boolean bool) {
+        platforms.add(bool);
     }
 
     public int getInstances() {
@@ -33,8 +49,7 @@ public class Game {
     public void setInstances(int instances) {
         this.instances = instances;
     }
-    
-    
+
     public int getAppid() {
         return appid;
     }
@@ -104,5 +119,5 @@ public class Game {
         }
         return true;
     }
-    
+
 }

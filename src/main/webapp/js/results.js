@@ -610,29 +610,30 @@ app.controller('karbonCtrl', [
       return games;
     };
     buyOrPlay = function(games) {
-      var game, myGame, newGameList, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1;
+      var game, myGame, newBuyList, newGameList, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1;
       if ($scope.fPlay) {
-        $scope.title = "Games to play";
+        $scope.title = "Games to Play";
         newGameList = [];
         for (_i = 0, _len = games.length; _i < _len; _i++) {
           game = games[_i];
           _ref = $scope.user.games;
           for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
             myGame = _ref[_j];
-            if ((game != null) && (myGame != null) && game.name === myGame.name) {
+            if ((game != null) && (myGame != null) && ((game.name === myGame.name) || (game.appid === myGame.appid))) {
               newGameList.push(game);
             }
           }
         }
         games = newGameList;
       } else {
-        $scope.title = "Games to buy";
-        for (_k = 0, _len2 = games.length; _k < _len2; _k++) {
-          game = games[_k];
-          _ref1 = $scope.user.games;
-          for (_l = 0, _len3 = _ref1.length; _l < _len3; _l++) {
-            myGame = _ref1[_l];
-            if ((game != null) && (myGame != null) && game.name === myGame.name) {
+        newBuyList = [];
+        $scope.title = "Games to Buy";
+        _ref1 = $scope.user.games;
+        for (_k = 0, _len2 = _ref1.length; _k < _len2; _k++) {
+          myGame = _ref1[_k];
+          for (_l = 0, _len3 = games.length; _l < _len3; _l++) {
+            game = games[_l];
+            if ((game != null) && (myGame != null) && ((game.name === myGame.name) || (game.appid === myGame.appid))) {
               games.remove(game);
               break;
             }
@@ -714,9 +715,12 @@ app.controller('karbonCtrl', [
       games.sort(sortBy);
       return $scope.gameList = games;
     };
-    return $scope.getIndGameList = function() {
+    $scope.getIndGameList = function() {
       $scope.all = false;
       return $scope.getGameList();
+    };
+    return $scope.getMyGames = function() {
+      return $scope.gameList = $scope.user.games;
     };
   }
 ]);

@@ -1,5 +1,6 @@
+bgcolor = #162231 
 body
-  background black
+  background linear-gradient(left, bgcolor, #101010, bgcolor)
   color white
 
 .master
@@ -7,6 +8,8 @@ body
 
 .sidebar
   col(2/5)
+  border-radius 2px
+  padding 15px
 .theList
   col(3/5)
 
@@ -17,12 +20,40 @@ div
   color white
 
 .game
-  margin-bottom 10px
-  &:hover .flist
-    display inline
+  group()
+  background #162231
+  padding 15px
+  margin-bottom 25px
+  border-radius 2px
+  p
+    margin 0
+    margin-top 5px
+  img
+    margin-right 15px
+  ul
     li
-      display inline
-  
+      fs(70%)
+
+header
+  width:100%
+  h1
+    padding:0;
+    margin:0;
+    margin-left: 20px;
+    font-family: 'Revalia', cursive;
+    font-size:250%;
+    color white
+  span
+    margin-left:20px;
+    font-style:italic;
+    color white
+  margin-bottom 0
+  hr
+    margin 0
+    padding-bottom 0
+
+#headerTitle
+  color white
 a
   text-decoration: none
   color white 
@@ -32,14 +63,13 @@ a
   text-shadow: 2px 2px #303030
   
 .flist
-  display none
   italic()
   color: #AAAAAA
   list-style: none
   margin 0
   padding 0
   li 
-    display none
+    display inline
     margin 0
     padding 0
 
@@ -48,5 +78,61 @@ ul.flist li:after
   
 ul.flist li:last-child:after
   content: "";
-  
-  
+
+.mainContent
+{
+padding:20px 100px;
+}
+footer
+  position:fixed;
+  margin:10px;
+  width:100%;
+  height:50px;
+  bottom:0;
+  img
+    float right
+    margin-right 20px  
+.rightside
+{
+float: right;
+}
+.userList
+{
+border: 1px solid lightgrey;
+padding:20px;
+width:400px;
+}
+.userAvatar
+{
+width:100px;
+float:left;
+margin-right: 20px;
+}
+
+.steamOpenIdText
+  width:600px;
+  margin-left: auto;
+  margin-right:auto;
+  line-height:150%
+  .left
+    col(1/2)
+  img
+    col(1/2)
+    margin-top 20px
+
+.callToAction
+  margin 0
+  border-bottom 1px solid grey
+  text-align center
+  background linear-gradient(top, bgcolord, #101010)
+  h1
+    fs(250%)
+    color white
+    padding 30px 0
+  padding 60px 0
+  hr
+    padding 0
+    margin 0
+  img
+    width 150px
+    
