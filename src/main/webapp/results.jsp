@@ -60,7 +60,7 @@
             </div>
         </div>
         <footer>
-            <img src="Powered_by_steam.jpg" alt="Powered by Steam"/>
+            <img src="Powered_by_steam.png" alt="Powered by Steam"/>
         </footer>
     </body>
 </html>
