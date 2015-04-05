@@ -26,9 +26,9 @@
             <br />
             <br />
             <br />
-            <h1 style="color:white;"> Calculating Awesome</h1>
+            <h1 style="color:white;">Calculating Awesome</h1>
             <br />
-            <img src="img/loading.jpg" />
+            <img src="img/loading.gif" style="width:300px;"/>
             <br />
 
             <br />

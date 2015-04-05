@@ -724,3 +724,11 @@ app.controller('karbonCtrl', [
     };
   }
 ]);
+
+app = angular.module('loading', []);
+
+app.controller('loadingCtrl', [
+  '$scope', '$timeout', '$interval', function($scope, $timeout, $interval) {
+    return $scope.loadingMsg = "Gathering Games";
+  }
+]);

@@ -129,3 +129,9 @@ app.controller('karbonCtrl', ['$scope', '$timeout', '$interval',\
   $scope.getMyGames = ->
     $scope.gameList = $scope.user.games
 ]) #End of AngularJS scope
+
+app = angular.module('loading', [])
+app.controller('loadingCtrl', ['$scope', '$timeout', '$interval',\
+              ($scope, $timeout, $interval) ->
+  $scope.loadingMsg = "Gathering Games"
+]) #End of AngularJS scope
