@@ -43,8 +43,8 @@
             <div class="theList">
                 <div ng-repeat="game in gameList">
                     <a href="http://store.steampowered.com/app/{{game.appid}}/">
-                        <div class="game">
-                            <img src="{{game.img_logo_url}}"/>
+                        <div class="game" title="{{game.name}}">
+                            <img src="{{game.img_logo_url}}" alt="{{game.name}}"/>
                             <p>
                                 <ng-pluralize count="game.count"
                                 when="{'1': 'You only have one friend with this game.',

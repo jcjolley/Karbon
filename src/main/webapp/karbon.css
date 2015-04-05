@@ -1,0 +1,155 @@
+/* 
+    Created on : Mar 24, 2015, 9:05:27 PM
+    Author     : Andrew
+*/
+
+body
+{
+background:black;
+color:lightgrey;
+padding:0px;
+margin:0px;
+font-family: 'Open Sans', sans-serif;
+
+}
+header
+{
+width:100%
+}
+header h1
+{
+padding:0;
+margin:0;
+margin-left: 20px;
+font-family: 'Revalia', cursive;
+font-size:250%;
+}
+header span
+{
+margin-left:20px;
+font-style:italic;
+}
+.mainContent
+{
+padding:20px 100px;
+}
+footer
+{
+position:fixed;
+margin-bottom:60px;
+width:100%;
+height:50px;
+bottom:0;
+text-align:center;
+}
+.rightside
+{
+float: right;
+}
+.userList
+{
+border: 1px solid lightgrey;
+padding:20px;
+width:400px;
+}
+.userAvatar
+{
+width:100px;
+float:left;
+margin-right: 20px;
+}
+
+.steamOpenIdText
+{
+width:500px;
+margin-left: auto;
+margin-right:auto;
+text-align: center;
+}
+
+h4
+{
+  font-family: 'Revalia', cursive;
+}
+
+.tab
+{
+  padding-top: 10px;
+  height: 70px
+}
+.display
+{
+  width: 1300px;
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+.tabNav
+{
+  border: 1px solid lightgray;
+  margin: 0px;
+  padding: 0px;
+  width: 298px;
+  height: 400px;
+  float: right;
+  text-align: center;
+}
+
+a:hover
+{
+  color: lightgray;
+}
+
+a:link
+{
+  color: lightgray;
+}
+
+a:visited
+{
+  color: lightgray;
+}
+
+a:active
+{
+  color: lightgray;
+}
+.ourNames
+{
+}
+
+.screenShots
+{
+  border: 1px solid lightgray;
+  margin: 0px;
+  padding: 0px;
+  width:1000px;
+  height:400px;
+}
+#gamestobuy
+{
+  max-height:100%;
+  max-width:100%;
+}
+
+#gamestoplay
+{
+  max-height:100%;
+  max-width:100%;
+}
+#steamlogin
+{
+  max-height:100%;
+  max-width:100%;
+  
+}
+#login
+{
+  max-height:100%;
+  max-width:100%;
+}
+
+#slider > img
+{
+  max-height:306px;
+}
