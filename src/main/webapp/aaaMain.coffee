@@ -108,19 +108,28 @@ app.controller('karbonCtrl', ['$scope', '$timeout', '$interval',\
   $scope.getGameList = ->
     games = []
     newGames = []
+    longGames = []
     initializeGames()
     games = getGames()
     games = buyOrPlay(games)
+    
     if $scope.all
       for friend in $scope.user.friends
         friend.selected = false
+    
     if $scope.all and !$scope.recent
       for game in games
-        if game.count > 2
-          newGames.push game
+        newGames.push game
       games = newGames
     games.sort sortBy
-    $scope.gameList = games
+    
+    if games.length > 25
+      for game in games
+        if game.flist.length > 2
+          longGames.push game
+      $scope.gameList = longGames
+    else
+      $scope.gameList = games
     
   $scope.getIndGameList = ->
     $scope.all = false

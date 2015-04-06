@@ -690,9 +690,10 @@ app.controller('karbonCtrl', [
       return recentGames;
     };
     $scope.getGameList = function() {
-      var friend, game, games, newGames, _i, _j, _len, _len1, _ref;
+      var friend, game, games, longGames, newGames, _i, _j, _k, _len, _len1, _len2, _ref;
       games = [];
       newGames = [];
+      longGames = [];
       initializeGames();
       games = getGames();
       games = buyOrPlay(games);
@@ -706,14 +707,22 @@ app.controller('karbonCtrl', [
       if ($scope.all && !$scope.recent) {
         for (_j = 0, _len1 = games.length; _j < _len1; _j++) {
           game = games[_j];
-          if (game.count > 2) {
-            newGames.push(game);
-          }
+          newGames.push(game);
         }
         games = newGames;
       }
       games.sort(sortBy);
-      return $scope.gameList = games;
+      if (games.length > 25) {
+        for (_k = 0, _len2 = games.length; _k < _len2; _k++) {
+          game = games[_k];
+          if (game.flist.length > 2) {
+            longGames.push(game);
+          }
+        }
+        return $scope.gameList = longGames;
+      } else {
+        return $scope.gameList = games;
+      }
     };
     $scope.getIndGameList = function() {
       $scope.all = false;
